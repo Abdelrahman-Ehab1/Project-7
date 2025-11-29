@@ -1,8 +1,6 @@
 package threads;
 
-import backend.SequentialValidator;
-import backend.SudokuBoard;
-import backend.ValidationResult;
+import backend.*;
 
 import java.util.List;
 import java.util.Map;
@@ -21,11 +19,11 @@ public class RowChecker implements Runnable{// each object from this class will 
     @Override
     public void run() {
         int[] row = board.getRow(index);
-        SequentialValidator validator = new SequentialValidator(board);
-        Map<Integer, List<Integer>> duplicates = validator.findDuplicatePositions(row);
+        //SequentialValidator validator = new SequentialValidator(board);
+        Map<Integer, List<Integer>> duplicates = DuplicateUtils.findDuplicatePositions(row);
 
         for (int num : duplicates.keySet()) {
-            result.addError("ROW " + (index + 1) + ", #" + num + ", " + validator.formatPositions(duplicates.get(num)));
+            result.addError("ROW " + (index + 1) + ", #" + num + ", " + FormatPositionsUtils.formatPositions(duplicates.get(num)));
         }
 
     }

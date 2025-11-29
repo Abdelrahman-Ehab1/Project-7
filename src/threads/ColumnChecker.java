@@ -1,8 +1,6 @@
 package threads;
 
-import backend.SequentialValidator;
-import backend.SudokuBoard;
-import backend.ValidationResult;
+import backend.*;
 
 import java.util.List;
 import java.util.Map;
@@ -21,11 +19,11 @@ public class ColumnChecker implements Runnable{// each object from this class wi
     @Override
     public void run() {
         int[] column = board.getColumn(index);
-        SequentialValidator validator = new SequentialValidator(board);
-        Map<Integer, List<Integer>> duplicates = validator.findDuplicatePositions(column);
+        //SequentialValidator validator = new SequentialValidator(board);
+        Map<Integer, List<Integer>> duplicates = DuplicateUtils.findDuplicatePositions(column);
 
         for (int num : duplicates.keySet()) {
-            result.addError("COL " + (index + 1) + ", #" + num + ", " + validator.formatPositions(duplicates.get(num)));
+            result.addError("COL " + (index + 1) + ", #" + num + ", " + FormatPositionsUtils.formatPositions(duplicates.get(num)));
         }
 
     }

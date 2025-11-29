@@ -1,8 +1,7 @@
 package threads;
 
-import backend.SequentialValidator;
-import backend.SudokuBoard;
-import backend.ValidationResult;
+import backend.*;
+
 
 import java.util.List;
 import java.util.Map;
@@ -21,11 +20,11 @@ public class BoxChecker implements Runnable{// each object from this class will 
     @Override
     public void run() {
         int[] box = board.getbox(index);
-        SequentialValidator validator = new SequentialValidator(board);
-        Map<Integer, List<Integer>> duplicates = validator.findDuplicatePositions(box);
+       // SequentialValidator validator = new SequentialValidator(board);
+        Map<Integer, List<Integer>> duplicates = DuplicateUtils.findDuplicatePositions(box);
 
         for (int num : duplicates.keySet()) {
-            result.addError("BOX " + (index + 1) + ", #" + num + ", " + validator.formatPositions(duplicates.get(num)));
+            result.addError("BOX " + (index + 1) + ", #" + num + ", " + FormatPositionsUtils.formatPositions(duplicates.get(num)));
         }
 
     }
