@@ -1,5 +1,7 @@
 package backend;
 
+import com.sun.source.tree.SynchronizedTree;
+
 import java.util.*;
 
 
@@ -9,24 +11,24 @@ public class ValidationResult {
     private final List<String> errors = new ArrayList<>();
 
 
-    public void addError(String message) {
+    public synchronized void addError(String message) {
 
         errors.add(message);
     }
     
 
-    public boolean isValid() {
+    public synchronized boolean isValid() {
 
         return errors.isEmpty();
     }
 
 
-    public List<String> getErrors() {
+    public synchronized List<String> getErrors() {
         return errors;
     }
 
 
-    public void printReport() {
+    public synchronized void printReport() {
         if (isValid()) {
             System.out.println("Valid");
             return;
