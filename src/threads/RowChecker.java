@@ -2,29 +2,24 @@ package threads;
 
 import backend.*;
 
-import java.util.List;
-import java.util.Map;
-
-public class RowChecker implements Runnable{// each object from this class will represent a thread that deals with a row in a Sodoku board
-    private SudokuBoard board ;
-    private int index;
-    private ValidationResult result;
+public class RowChecker extends Checker{      // each object from this class will represent a thread that deals with a row in a Sodoku board
 
     public RowChecker(SudokuBoard board, int index, ValidationResult result) {
-        this.board = board;
+        /*this.board = board;
         this.index = index;
-        this.result = result;
+        this.result = result;*/
+        super(board,index,result);
     }
 
     @Override
-    public void run() {
-        int[] row = board.getRow(index);
-        //SequentialValidator validator = new SequentialValidator(board);
-        Map<Integer, List<Integer>> duplicates = DuplicateUtils.findDuplicatePositions(row);
-
-        for (int num : duplicates.keySet()) {
-            result.addError("ROW " + (index + 1) + ", #" + num + ", " + FormatPositionsUtils.formatPositions(duplicates.get(num)));
-        }
-
+    public int[] getPartArray() {
+        return board.getRow(index);
     }
+
+    @Override
+    public String getPartLabel() {
+        return "ROW ";
+    }
+
+
 }
