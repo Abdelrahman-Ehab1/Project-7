@@ -8,7 +8,7 @@ public class Main {
 
         long start = System.nanoTime();
         SudokuBoard board = new SudokuBoard("Sudoku.csv");
-        int mode = 2;
+        int mode = 3;
 
         Validator validator = ValidatorFactory.createValidatorobj(mode, board);
 

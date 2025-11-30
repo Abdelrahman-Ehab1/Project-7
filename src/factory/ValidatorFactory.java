@@ -1,8 +1,8 @@
 package factory;
 
+import Modes.TwentySevenThreadsValidator;
 import backend.SequentialValidator;
-import Modes.ThreeThreadsValdator;
-import Modes.TwentySevenThreadsValdator;
+import Modes.ThreeThreadsValidator;
 import backend.SudokuBoard;
 
 public class ValidatorFactory {
