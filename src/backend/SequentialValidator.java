@@ -1,8 +1,10 @@
 package backend;
 
+import factory.Validator;
+
 import java.util.*;
 
-public class SequentialValidator {
+public class SequentialValidator implements Validator {
 
     private final SudokuBoard board;
 
@@ -10,6 +12,7 @@ public class SequentialValidator {
         this.board = board;
     }
 
+    @Override
     public ValidationResult validate() {
         ValidationResult result = new ValidationResult();
 
