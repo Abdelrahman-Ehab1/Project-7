@@ -3,8 +3,6 @@ package factory;
 import Modes.ThreeThreadsValidator;
 import Modes.TwentySevenThreadsValidator;
 import backend.SequentialValidator;
-import Modes.ThreeThreadsValidator;
-import Modes.TwentySevenThreadsValidator;
 import backend.SudokuBoard;
 
 public class ValidatorFactory {
@@ -19,7 +17,7 @@ public class ValidatorFactory {
             return new TwentySevenThreadsValidator(board);
         }
         else{
-             throw new IllegalArgumentException("Invalid mode. Must be 0,3 or 27");
+             throw new IllegalArgumentException("Invalid mode: Must be 0,3 or 27");
         }
     }
 

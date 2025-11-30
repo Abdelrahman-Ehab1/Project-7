@@ -6,11 +6,11 @@ import factory.ValidatorFactory;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        //args[0];  --> path
-        //args[1];  --> mode
+        //args[0];  --> lel path mn gitbash
+        //args[1];  --> lel mode mn gitbash
         long start = System.nanoTime();
 
-        if(args.length < 2){
+        if(args.length < 2){  // lw 3ml insertion l arg wahed f gitbash
             System.out.println("Must be put in this format: <<args[0] --> FilePath>> <<args[1] --> mode>>");
         }
 
