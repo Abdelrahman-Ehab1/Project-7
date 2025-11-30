@@ -1,14 +1,30 @@
-import Modes.ThreeThreadsValdator;
-import Modes.TwentySevenThreadsValdator;
+import backend.SudokuBoard;
+import backend.ValidationResult;
+import factory.Validator;
+import factory.ValidatorFactory;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    long start = System.nanoTime();
-//new ThreeThreadsValdator();
-    new TwentySevenThreadsValdator();
-    long end = System.nanoTime();
+public class Main {
+    public static void main(String[] args) throws Exception {
 
-    System.out.println("Time taken: " + (end - start)/1_000_000 + " ms");
+        //args[0];  --> path
+        //args[1];  --> mode
+        long start = System.nanoTime();
+
+        if(args.length < 2){
+            System.out.println("Must be put in this format: <<args[0] --> FilePath>> <<args[1] --> mode>>");
+        }
+
+        String path = args[0];
+        int mode = Integer.parseInt(args[1]);
+
+        SudokuBoard board = new SudokuBoard(path);
+        Validator validator = ValidatorFactory.createValidatorobj(mode, board);
+        ValidationResult result = validator.validate();
+        result.printReport();
+
+        long end = System.nanoTime();
+
+        System.out.println("Time taken: " + (end - start)/1_000_000 + " ms");
+        //
     }
-
+}
