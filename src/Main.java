@@ -12,6 +12,7 @@ public class Main {
 
         if(args.length < 2){  // lw 3ml insertion l arg wahed f gitbash
             System.out.println("Must be put in this format: <<args[0] --> FilePath>> <<args[1] --> mode>>");
+            return;
         }
 
         String path = args[0];
